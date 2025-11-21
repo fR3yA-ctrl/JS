@@ -16,7 +16,7 @@
           <input
             type="text"
             id="first-name"
-            class="w-full p-2 rounded bg-gray-700 text-white"
+            class="w-full p-2 rounded bg-gray-700 text-white border border-gray-700"
             placeholder="Enter your first name"
           />
           <p id="first-name-error" class="text-red-400 mt-1" hidden>
@@ -29,7 +29,7 @@
           <input
             type="text"
             id="last-name"
-            class="w-full p-2 rounded bg-gray-700 text-white"
+            class="w-full p-2 rounded bg-gray-700 text-white border border-gray-700"
             placeholder="Enter your last name"
           />
           <p id="last-name-error" class="text-red-400 mt-1" hidden>
@@ -42,7 +42,7 @@
           <textarea
             id="feedback"
             rows="4"
-            class="w-full p-2 rounded bg-gray-700 text-white"
+            class="w-full p-2 rounded bg-gray-700 text-white border border-gray-700"
             placeholder="Share your thoughts..."
           ></textarea>
         </div>
@@ -57,7 +57,7 @@
     </main>
 
     <script>
-      // Select elements
+      // Elements
       const form = document.getElementById("feedback-form");
       const firstNameInput = document.getElementById("first-name");
       const lastNameInput = document.getElementById("last-name");
@@ -68,30 +68,37 @@
         // Prevent default form submission
         e.preventDefault();
 
-        // Reset error messages
+        // Reset error messages and borders
         firstNameError.hidden = true;
         lastNameError.hidden = true;
+        firstNameInput.classList.remove("border-red-500");
+        lastNameInput.classList.remove("border-red-500");
 
         let valid = true;
 
         // Validate first name
         if (firstNameInput.value.trim() === "") {
           firstNameError.hidden = false;
+          firstNameInput.classList.add("border-red-500");
           valid = false;
         }
 
         // Validate last name
         if (lastNameInput.value.trim() === "") {
           lastNameError.hidden = false;
+          lastNameInput.classList.add("border-red-500");
           valid = false;
         }
 
         if (valid) {
-          // If all good, you can process the form or just show a message
           alert(
             `Thank you for your feedback, ${firstNameInput.value} ${lastNameInput.value}!`
           );
-          form.reset(); // Clear form inputs
+          form.reset();
+
+          // Reset
+          firstNameInput.classList.remove("border-red-500");
+          lastNameInput.classList.remove("border-red-500");
         }
       });
     </script>
