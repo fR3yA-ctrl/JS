@@ -4,101 +4,243 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <script src="https://cdn.tailwindcss.com"></script>
-    <title>Feedback Form with Validation</title>
+    <title>JS Mini Project</title>
   </head>
-  <body class="bg-gray-800 text-white font-mono p-8">
-    <main class="max-w-md mx-auto space-y-6">
-      <h1 class="text-3xl mb-4">Feedback Form</h1>
 
-      <form id="feedback-form" class="space-y-4">
-        <div>
-          <label for="first-name" class="block mb-1">First Name:</label>
-          <input
-            type="text"
-            id="first-name"
-            class="w-full p-2 rounded bg-gray-700 text-white border border-gray-700"
-            placeholder="Enter your first name"
-          />
-          <p id="first-name-error" class="text-red-400 mt-1" hidden>
-            Please enter your first name.
-          </p>
-        </div>
+  <body class="bg-gray-900 text-white font-mono p-8">
+    <main class="max-w-lg mx-auto space-y-6">
+      <h1 class="text-3xl mb-4">JS Practice Project</h1>
 
-        <div>
-          <label for="last-name" class="block mb-1">Last Name:</label>
-          <input
-            type="text"
-            id="last-name"
-            class="w-full p-2 rounded bg-gray-700 text-white border border-gray-700"
-            placeholder="Enter your last name"
-          />
-          <p id="last-name-error" class="text-red-400 mt-1" hidden>
-            Please enter your last name.
-          </p>
-        </div>
-
-        <div>
-          <label for="feedback" class="block mb-1">Feedback:</label>
-          <textarea
-            id="feedback"
-            rows="4"
-            class="w-full p-2 rounded bg-gray-700 text-white border border-gray-700"
-            placeholder="Share your thoughts..."
-          ></textarea>
-        </div>
+      <!-- TABS -->
+      <div class="flex space-x-4 border-b border-gray-500 pb-2">
+        <button
+          data-tab="todo"
+          class="tab-btn px-4 py-2 border-b-2 border-green-500 font-semibold"
+        >
+          To-Do List
+        </button>
 
         <button
-          type="submit"
-          class="w-full py-2 bg-green-600 hover:bg-green-700 rounded font-semibold text-gray-900"
+          data-tab="calc"
+          class="tab-btn px-4 py-2 border-b-2 border-transparent hover:border-gray-500 font-semibold"
         >
-          Submit Feedback
+          Calculator
         </button>
-      </form>
+
+        <button
+          data-tab="form"
+          class="tab-btn px-4 py-2 border-b-2 border-transparent hover:border-gray-500 font-semibold"
+        >
+          Share Thoughts
+        </button>
+      </div>
+
+      <!-- CONTENT -->
+
+      <!-- TO-DO LIST -->
+      <section id="tab-todo" class="tab-content">
+        <h2 class="text-xl font-bold mb-3">To-Do List</h2>
+
+        <div class="flex mb-3">
+          <input
+            id="todo-input"
+            class="flex-1 p-2 rounded bg-gray-700 border border-gray-600"
+            placeholder="Add a task..."
+          />
+          <button
+            id="add-todo"
+            class="ml-2 px-4 bg-green-500 text-black font-bold rounded"
+          >
+            Add
+          </button>
+        </div>
+
+        <ul id="todo-list" class="space-y-2"></ul>
+      </section>
+
+      <!-- CALCULATOR -->
+      <section id="tab-calc" class="tab-content hidden">
+        <h2 class="text-xl font-bold mb-3">Calculator</h2>
+
+        <input
+          id="calc-display"
+          class="w-full p-3 text-right text-black font-bold rounded bg-white mb-3"
+          disabled
+        />
+
+        <div class="grid grid-cols-4 gap-2 text-black">
+          <button class="calc-btn p-3 bg-gray-300">7</button>
+          <button class="calc-btn p-3 bg-gray-300">8</button>
+          <button class="calc-btn p-3 bg-gray-300">9</button>
+          <button class="calc-btn p-3 bg-yellow-300">/</button>
+
+          <button class="calc-btn p-3 bg-gray-300">4</button>
+          <button class="calc-btn p-3 bg-gray-300">5</button>
+          <button class="calc-btn p-3 bg-gray-300">6</button>
+          <button class="calc-btn p-3 bg-yellow-300">*</button>
+
+          <button class="calc-btn p-3 bg-gray-300">1</button>
+          <button class="calc-btn p-3 bg-gray-300">2</button>
+          <button class="calc-btn p-3 bg-gray-300">3</button>
+          <button class="calc-btn p-3 bg-yellow-300">-</button>
+
+          <button class="calc-btn p-3 bg-gray-300">0</button>
+          <button class="calc-btn p-3 bg-gray-300">.</button>
+          <button id="calc-equals" class="p-3 bg-green-400">=</button>
+          <button class="calc-btn p-3 bg-yellow-300">+</button>
+
+          <button id="calc-clear" class="col-span-4 p-3 bg-red-400 font-bold">
+            CLEAR
+          </button>
+        </div>
+      </section>
+
+      <!-- FEEDBACK FORM -->
+      <section id="tab-form" class="tab-content hidden">
+        <h2 class="text-xl font-bold mb-3">Share Your Thoughts</h2>
+
+        <form id="feedback-form" class="space-y-4">
+          <div>
+            <label class="block mb-1">First Name:</label>
+            <input
+              id="first-name"
+              class="w-full p-2 rounded bg-gray-700 border border-gray-600"
+            />
+            <p id="first-name-error" class="text-red-400 mt-1" hidden>
+              Please enter your first name.
+            </p>
+          </div>
+
+          <div>
+            <label class="block mb-1">Last Name:</label>
+            <input
+              id="last-name"
+              class="w-full p-2 rounded bg-gray-700 border border-gray-600"
+            />
+            <p id="last-name-error" class="text-red-400 mt-1" hidden>
+              Please enter your last name.
+            </p>
+          </div>
+
+          <div>
+            <label class="block mb-1">Feedback:</label>
+            <textarea
+              id="feedback"
+              rows="4"
+              class="w-full p-2 rounded bg-gray-700 border border-gray-600"
+            ></textarea>
+          </div>
+
+          <button class="w-full py-2 bg-green-500 text-black rounded font-bold">
+            Submit
+          </button>
+        </form>
+      </section>
     </main>
 
     <script>
-      // Elements
+      /* -------------------------
+       TAB FUNCTIONALITY
+    ------------------------- */
+      const tabButtons = document.querySelectorAll(".tab-btn");
+      const tabContents = document.querySelectorAll(".tab-content");
+
+      tabButtons.forEach((btn) => {
+        btn.addEventListener("click", () => {
+          const target = btn.dataset.tab;
+
+          tabContents.forEach((c) => c.classList.add("hidden"));
+          tabButtons.forEach((b) => b.classList.remove("border-green-500"));
+
+          document.getElementById("tab-" + target).classList.remove("hidden");
+          btn.classList.add("border-green-500");
+        });
+      });
+
+      /* -------------------------
+       TO-DO LIST LOGIC
+    ------------------------- */
+      const todoInput = document.getElementById("todo-input");
+      const addTodo = document.getElementById("add-todo");
+      const todoList = document.getElementById("todo-list");
+
+      addTodo.addEventListener("click", () => {
+        const text = todoInput.value.trim();
+        if (!text) return;
+
+        const li = document.createElement("li");
+        li.classList.add(
+          "flex",
+          "items-center",
+          "bg-gray-700",
+          "p-2",
+          "rounded"
+        );
+
+        li.innerHTML = `
+        <input type="checkbox" class="mr-2">
+        <span class="flex-1">${text}</span>
+        <button class="ml-3 text-red-400 hover:text-red-300">X</button>
+      `;
+
+        li.querySelector("button").addEventListener("click", () => li.remove());
+        todoList.appendChild(li);
+        todoInput.value = "";
+      });
+
+      /* -------------------------
+       CALCULATOR LOGIC
+    ------------------------- */
+      const display = document.getElementById("calc-display");
+      const buttons = document.querySelectorAll(".calc-btn");
+
+      buttons.forEach((btn) => {
+        btn.addEventListener("click", () => {
+          display.value += btn.textContent;
+        });
+      });
+
+      document.getElementById("calc-equals").onclick = () => {
+        try {
+          display.value = eval(display.value);
+        } catch {
+          display.value = "Error";
+        }
+      };
+
+      document.getElementById("calc-clear").onclick = () =>
+        (display.value = "");
+
+      /* -------------------------
+       FORM VALIDATION
+    ------------------------- */
       const form = document.getElementById("feedback-form");
-      const firstNameInput = document.getElementById("first-name");
-      const lastNameInput = document.getElementById("last-name");
-      const firstNameError = document.getElementById("first-name-error");
-      const lastNameError = document.getElementById("last-name-error");
 
       form.addEventListener("submit", (e) => {
-        // Prevent default form submission
         e.preventDefault();
 
-        // Reset error messages and borders
-        firstNameError.hidden = true;
-        lastNameError.hidden = true;
-        firstNameInput.classList.remove("border-red-500");
-        lastNameInput.classList.remove("border-red-500");
+        const fn = document.getElementById("first-name");
+        const ln = document.getElementById("last-name");
+        const fnErr = document.getElementById("first-name-error");
+        const lnErr = document.getElementById("last-name-error");
+
+        fnErr.hidden = true;
+        lnErr.hidden = true;
 
         let valid = true;
 
-        // Validate first name
-        if (firstNameInput.value.trim() === "") {
-          firstNameError.hidden = false;
-          firstNameInput.classList.add("border-red-500");
+        if (!fn.value.trim()) {
+          fnErr.hidden = false;
           valid = false;
         }
-
-        // Validate last name
-        if (lastNameInput.value.trim() === "") {
-          lastNameError.hidden = false;
-          lastNameInput.classList.add("border-red-500");
+        if (!ln.value.trim()) {
+          lnErr.hidden = false;
           valid = false;
         }
 
         if (valid) {
-          alert(
-            `Thank you for your feedback, ${firstNameInput.value} ${lastNameInput.value}!`
-          );
+          alert(`Thanks, ${fn.value} ${ln.value}!`);
           form.reset();
-
-          // Reset
-          firstNameInput.classList.remove("border-red-500");
-          lastNameInput.classList.remove("border-red-500");
         }
       });
     </script>

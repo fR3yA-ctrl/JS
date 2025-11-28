@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&family=Cormorant+Garamond:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+    <title>Potions</title>
+  </head>
+
+  <body
+    class="relative min-h-screen bg-[#0a0a0f] text-gray-200 font-['Cormorant_Garamond']"
+  >
+    <!-- Background -->
+    <div
+      class="absolute inset-0 bg-[url('/Images/potions_bg.jpg')] bg-cover bg-center opacity-20 blur-sm"
+    ></div>
+    <div
+      class="absolute inset-0 bg-gradient-to-b from-[#0a0a0f]/80 via-[#0a0a0f]/70 to-black"
+    ></div>
+
+    <!-- Header -->
+    <header class="relative text-center pt-16">
+      <h1
+        class="text-5xl font-['Cinzel_Decorative'] text-[#d4af37] drop-shadow-lg"
+      >
+        Potions & Elixirs
+      </h1>
+      <p class="mt-4 text-lg text-gray-300 italic max-w-3xl mx-auto">
+        “The subtle science and exact art of potion-making lies not in luck or
+        chance, but in precision and understanding.”
+      </p>
+    </header>
+
+    <!-- Return Button -->
+    <div class="relative text-center mt-8">
+      <a
+        href="index.html"
+        class="fixed top-6 left-6 bg-[#111827]/80 border border-[#d4af37]/40 text-[#d4af37] px-6 py-2 rounded-xl font-['Cinzel_Decorative'] shadow-lg hover:shadow-[0_0_15px_rgba(212,175,55,0.5)] hover:bg-[#111827]/90 transition-all duration-300 z-50"
+      >
+        ← Return
+      </a>
+    </div>
+
+    <!-- Ingredients Section -->
+    <main class="relative z-10 max-w-5xl mx-auto mt-12 px-6 space-y-12">
+      <section>
+        <h2
+          class="text-3xl text-[#d4af37] font-['Cinzel_Decorative'] mb-4 text-center"
+        >
+          Common Potion Ingredients
+        </h2>
+        <div class="overflow-x-auto">
+          <table
+            class="min-w-full border border-[#d4af37]/40 text-gray-300 text-left"
+          >
+            <thead class="bg-[#111827]/80 text-[#d4af37]">
+              <tr>
+                <th class="p-3 border-b border-[#d4af37]/40">Ingredient</th>
+                <th class="p-3 border-b border-[#d4af37]/40">
+                  Description / Use
+                </th>
+              </tr>
+            </thead>
+            <tbody id="ingredients-tbody" class="bg-black/30"></tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- Potions Section -->
+      <section>
+        <h2
+          class="text-3xl text-[#d4af37] font-['Cinzel_Decorative'] mb-4 text-center"
+        >
+          Notable Potions
+        </h2>
+        <div class="overflow-x-auto">
+          <table
+            class="min-w-full border border-[#d4af37]/40 text-gray-300 text-left"
+          >
+            <thead class="bg-[#111827]/80 text-[#d4af37]">
+              <tr>
+                <th class="p-3 border-b border-[#d4af37]/40">Potion</th>
+                <th class="p-3 border-b border-[#d4af37]/40">Pronunciation</th>
+                <th class="p-3 border-b border-[#d4af37]/40">Effect</th>
+              </tr>
+            </thead>
+            <tbody id="potions-tbody" class="bg-black/30"></tbody>
+          </table>
+        </div>
+      </section>
+    </main>
+
+    <!-- Footer -->
+    <footer
+      class="relative z-10 text-center mt-20 pb-10 text-gray-400 italic font-['Cormorant_Garamond']"
+    >
+      "I can teach you how to bottle fame, brew glory, and even put a stopper in
+      death.”
+    </footer>
+
+    <script>
+      const ingredients = [
+        {
+          name: "Fluxweed",
+          description: "Used in Polyjuice Potion; must be picked at full moon.",
+        },
+        {
+          name: "Lacewing Flies",
+          description: "Stewed for 21 days in Polyjuice Potion.",
+        },
+        {
+          name: "Asphodel",
+          description:
+            "Used in Draught of Living Death; a potent sleeping potion.",
+        },
+        {
+          name: "Dittany",
+          description:
+            "Heals wounds and burns; key ingredient in Wiggenweld Potion.",
+        },
+        {
+          name: "Unicorn Hair",
+          description:
+            "Used for strengthening elixirs and purity-based potions.",
+        },
+      ];
+
+      const potions = [
+        {
+          potion: "Polyjuice Potion",
+          pronunciation: "PAW-lee-juice",
+          effect: "Allows the drinker to take on the form of another person.",
+        },
+        {
+          potion: "Felix Felicis",
+          pronunciation: "FEE-lix fe-LEE-sis",
+          effect: "Grants temporary luck to the drinker.",
+        },
+        {
+          potion: "Wiggenweld Potion",
+          pronunciation: "WIG-en-weld",
+          effect: "Restores health and awakens someone from magical sleep.",
+        },
+        {
+          potion: "Draught of Peace",
+          pronunciation: "DRAFT of peace",
+          effect: "Calms agitation and relieves anxiety.",
+        },
+        {
+          potion: "Amortentia",
+          pronunciation: "am-or-TEN-sha",
+          effect: "Powerful love potion with a unique scent for each person.",
+        },
+        {
+          potion: "Thunderbrew",
+          pronunciation: "THUN-der-broo",
+          effect: "Creates a defensive storm around the drinker in combat.",
+        },
+        {
+          potion: "Invisibility Potion",
+          pronunciation: "in-VIS-ih-bil-ih-tee",
+          effect: "Temporarily renders the drinker invisible.",
+        },
+      ];
+
+      function createTableRow(cells, classes = []) {
+        const tr = document.createElement("tr");
+        tr.classList.add("hover:bg-[#d4af37]/10", "transition");
+        cells.forEach((cellText, idx) => {
+          const td = document.createElement("td");
+          td.classList.add("p-3");
+          // For the potions pronunciation (italic)
+          if (classes[idx] === "italic" && typeof cellText === "string") {
+            const i = document.createElement("i");
+            i.textContent = cellText;
+            td.appendChild(i);
+          } else {
+            td.textContent = cellText;
+          }
+          tr.appendChild(td);
+        });
+        return tr;
+      }
+
+      // Fill Ingredients Table
+      const ingredientsTbody = document.getElementById("ingredients-tbody");
+      ingredients.forEach(({ name, description }) => {
+        const tr = createTableRow([name, description]);
+        ingredientsTbody.appendChild(tr);
+      });
+
+      // Fill Potions Table
+      const potionsTbody = document.getElementById("potions-tbody");
+      potions.forEach(({ potion, pronunciation, effect }) => {
+        const tr = createTableRow(
+          [potion, pronunciation, effect],
+          [null, "italic", null]
+        );
+        potionsTbody.appendChild(tr);
+      });
+    </script>
+  </body>
+</html>
